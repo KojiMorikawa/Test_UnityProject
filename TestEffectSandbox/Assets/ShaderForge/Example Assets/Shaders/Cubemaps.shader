@@ -66,8 +66,8 @@ Shader "Shader Forge/Examples/Cubemaps" {
                 float3x3 tangentTransform = float3x3( i.tangentDir, i.binormalDir, i.normalDir);
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
 /////// Normals:
-                float2 node_9055 = i.uv0;
-                float3 normalLocal = UnpackNormal(tex2D(_Normal,TRANSFORM_TEX(node_9055.rg, _Normal))).rgb;
+                float2 node_1092 = i.uv0;
+                float3 normalLocal = UnpackNormal(tex2D(_Normal,TRANSFORM_TEX(node_1092.rg, _Normal))).rgb;
                 float3 normalDirection =  normalize(mul( normalLocal, tangentTransform )); // Perturbed normals
                 float3 viewReflectDirection = reflect( -viewDirection, normalDirection );
                 float3 lightDirection = normalize(_WorldSpaceLightPos0.xyz);
@@ -87,7 +87,7 @@ Shader "Shader Forge/Examples/Cubemaps" {
                 float3 node_215 = (node_1.rgb*node_1.a*8.0);
                 float node_223 = pow(1.0-max(0,dot(normalDirection, viewDirection)),_FresnelExponent);
                 float node_11 = 0.4;
-                float4 _Specular_var = tex2D(_Specular,TRANSFORM_TEX(node_9055.rg, _Specular));
+                float4 _Specular_var = tex2D(_Specular,TRANSFORM_TEX(node_1092.rg, _Specular));
                 float3 specularColor = float3(_Specular_var.r,_Specular_var.r,_Specular_var.r);
                 float3 specularAmb = (lerp((0.7*node_215),node_215,node_223)*((i.normalDir.g*node_11)+(1.0 - node_11))) * specularColor;
                 float3 specular = (floor(attenuation) * _LightColor0.xyz) * pow(max(0,dot(halfDirection,normalDirection)),specPow) * specularColor + specularAmb;
@@ -154,8 +154,8 @@ Shader "Shader Forge/Examples/Cubemaps" {
                 float3x3 tangentTransform = float3x3( i.tangentDir, i.binormalDir, i.normalDir);
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
 /////// Normals:
-                float2 node_9056 = i.uv0;
-                float3 normalLocal = UnpackNormal(tex2D(_Normal,TRANSFORM_TEX(node_9056.rg, _Normal))).rgb;
+                float2 node_1093 = i.uv0;
+                float3 normalLocal = UnpackNormal(tex2D(_Normal,TRANSFORM_TEX(node_1093.rg, _Normal))).rgb;
                 float3 normalDirection =  normalize(mul( normalLocal, tangentTransform )); // Perturbed normals
                 float3 lightDirection = normalize(lerp(_WorldSpaceLightPos0.xyz, _WorldSpaceLightPos0.xyz - i.posWorld.xyz,_WorldSpaceLightPos0.w));
                 float3 halfDirection = normalize(viewDirection+lightDirection);
@@ -170,7 +170,7 @@ Shader "Shader Forge/Examples/Cubemaps" {
                 float specPow = exp2( gloss * 10.0+1.0);
 ////// Specular:
                 NdotL = max(0.0, NdotL);
-                float4 _Specular_var = tex2D(_Specular,TRANSFORM_TEX(node_9056.rg, _Specular));
+                float4 _Specular_var = tex2D(_Specular,TRANSFORM_TEX(node_1093.rg, _Specular));
                 float3 specularColor = float3(_Specular_var.r,_Specular_var.r,_Specular_var.r);
                 float3 specular = attenColor * pow(max(0,dot(halfDirection,normalDirection)),specPow) * specularColor;
                 float3 finalColor = 0;
