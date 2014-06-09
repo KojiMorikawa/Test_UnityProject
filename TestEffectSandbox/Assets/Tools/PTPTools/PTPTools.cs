@@ -22,10 +22,10 @@ public class PTPTools
             obj.transform.position = new Vector3(0,0,0);
         }
 
-        SearchObj = GameObject.Find("SceneObject");
+        SearchObj = GameObject.Find("SceneObjects");
         if (SearchObj == null)
         {
-            GameObject obj = new GameObject("SceneObject");
+            GameObject obj = new GameObject("SceneObjects");
             obj.transform.position = new Vector3(0,0,0);
         }
     }

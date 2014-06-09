@@ -22,8 +22,8 @@ public class UIDragScrollView : MonoBehaviour
 	// Legacy functionality, kept for backwards compatibility. Use 'scrollView' instead.
 	[HideInInspector][SerializeField] UIScrollView draggablePanel;
 
-	Transform mTrans;
-	UIScrollView mScroll;
+    protected Transform mTrans;
+	protected UIScrollView mScroll;
 	bool mAutoFind = false;
 	bool mStarted = false;
 
